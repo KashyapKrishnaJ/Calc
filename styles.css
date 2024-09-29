@@ -1,4 +1,3 @@
-/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -83,12 +82,12 @@ button {
     padding: 15px;
     border: none;
     border-radius: 10px;
-    background: rgba(0, 102, 255, 0.7);
+    background: rgba(0, 0, 0, 0.7);  /* Black with 0.7 opacity */
     color: #fff;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: 0.3s ease;
-    box-shadow: 0 5px rgba(0, 102, 255, 0.5);
+    transition: background 0.3s ease; /* Smooth background transition */
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5); /* Consistent shadow */
 }
 
 /* Remove the blue highlight on mobile devices */
@@ -97,26 +96,26 @@ button:focus {
 }
 
 button:hover {
-    background: rgba(0, 102, 255, 1);
+    background: rgba(0, 0, 0, 0.85); /* Slightly darker when hovered */
     transform: translateY(-2px);
 }
 
 button:active {
     transform: translateY(5px);
-    box-shadow: 0 2px rgba(0, 102, 255, 0.5);
-    background: rgba(0, 102, 255, 1);
+    box-shadow: 0 2px rgba(0, 0, 0, 0.5); /* Lighter shadow on active press */
+    background: rgba(0, 0, 0, 0.85); /* Active state uses same background color */
 }
 
-/* To prevent buttons from staying blue on mobile */
+/* Ensure no focus or active color remains */
 button:focus-visible {
     outline: none;
-    background: rgba(0, 102, 255, 0.7); /* Revert to original background */
+    background: rgba(0, 0, 0, 0.7); /* Revert to original background */
 }
 
 button.color-cycle {
     margin-top: 20px;
     padding: 10px 20px;
-    background: rgba(0, 102, 255, 0.7);
+    background: rgba(0, 0, 0, 0.7);  /* Matches other buttons */
     border: none;
     border-radius: 10px;
 }

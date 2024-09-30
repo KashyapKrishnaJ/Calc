@@ -1,3 +1,4 @@
+/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,158 +9,163 @@ html, body {
     height: 100%;
     font-family: 'Raleway', sans-serif;
     background-attachment: fixed;
-    transition: background 1s ease-in-out;  /* Smooth transition for theme changes */
+    transition: background 1s ease-in-out;
+}
+
+/* Theme Styles */
+body.cyber-blue {
+    background: linear-gradient(135deg, #0f4c81, #00aaff);
+}
+
+body.inferno-red {
+    background: linear-gradient(135deg, #ff4c00, #ff6a00);
+}
+
+body.neon-purple {
+    background: linear-gradient(135deg, #6a0dad, #a74e85);
+}
+
+body.venom-green {
+    background: linear-gradient(135deg, #1bd75d, #00ff7f);
+}
+
+body.solar-gold {
+    background: linear-gradient(135deg, #ffcc00, #ffdb58);
 }
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }
 
-/* Themes */
-body.cyber-blue {
-    background: linear-gradient(135deg, rgba(0, 70, 150, 1), rgba(0, 130, 255, 0.8));
+/* Menu Bar Styles */
+.menu-bar {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
 }
 
-body.inferno-red {
-    background: linear-gradient(135deg, rgba(100, 0, 0, 1), rgba(200, 0, 0, 0.8));
+.menu-bar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
-body.neon-purple {
-    background: linear-gradient(135deg, rgba(60, 0, 120, 1), rgba(150, 0, 255, 0.8));
+.menu-bar li {
+    display: inline;
 }
 
-body.venom-green {
-    background: linear-gradient(135deg, rgba(0, 80, 0, 1), rgba(0, 160, 0, 0.8));
+.menu-bar button {
+    padding: 8px 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-body.solar-gold {
-    background: linear-gradient(135deg, rgba(90, 70, 0, 1), rgba(255, 195, 0, 0.8));
+.menu-bar button:hover {
+    background: rgba(0, 0, 0, 0.9);
 }
 
-/* Calculator container */
 .calculator-container {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     animation: fadeIn 1.5s ease-out;
-    max-width: 400px;
-    width: 100%;
-    transition: background 0.5s ease-in-out;
-}
-
-h1 {
-    font-weight: 600;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #fff;
-}
-
-input {
-    padding: 10px;
+    max-width: 400px; /* Set max width for compactness */
     width: 90%;
-    border-radius: 10px;
+    transition: background 0.5s ease-in-out;
+    margin-top: 15px;
+}
+
+/* Display Section */
+.display-section {
+    margin-bottom: 10px;
+}
+
+#calc-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px; /* Smaller font size */
+    text-align: right;
     border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.5);
-    font-size: 1rem;
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
     color: black;
 }
 
+#calc-answer {
+    font-size: 36px; /* Large font for answer, smaller than before */
+    margin-top: 5px;
+    color: black;
+    height: 40px; /* Ensure space for answer */
+}
+
+/* Button Grid Layout */
 .button-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    margin-top: 20px;
+    grid-gap: 8px; /* Smaller gap between buttons */
 }
 
-button {
-    padding: 15px;
+.button-grid button {
+    padding: 15px; /* Smaller button padding */
+    font-size: 16px; /* Smaller font size */
+    background: rgba(0, 0, 0, 0.7);
     border: none;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7);  /* Black with 0.7 opacity */
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background 0.3s ease; /* Smooth background transition */
-    box-shadow: 0 5px rgba(0, 0, 0, 0.5); /* Consistent shadow */
-}
-
-/* Remove the blue highlight on mobile devices */
-button:focus {
-    outline: none;
-}
-
-button:hover {
-    background: rgba(0, 0, 0, 0.85); /* Slightly darker when hovered */
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(5px);
-    box-shadow: 0 2px rgba(0, 0, 0, 0.5); /* Lighter shadow on active press */
-    background: rgba(0, 0, 0, 0.85); /* Active state uses same background color */
-}
-
-/* Ensure no focus or active color remains */
-button:focus-visible {
-    outline: none;
-    background: rgba(0, 0, 0, 0.7); /* Revert to original background */
-}
-
-button.color-cycle {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.7);  /* Matches other buttons */
-    border: none;
-    border-radius: 10px;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 1.2rem;
+    border-radius: 8px;
     color: white;
-    min-height: 24px;
-    animation: slideIn 0.5s ease-out;
-    font-weight: bold;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    padding: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-footer {
-    position: fixed;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: white;
-    opacity: 0.8;
+.button-grid button:active {
+    transform: scale(0.95);
+    background: rgba(0, 0, 0, 0.5);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calculator-container {
+        width: 95%;
+        padding: 15px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .button-grid button {
+        padding: 12px;
+        font-size: 14px; /* Further reduce font size */
+    }
+
+    #calc-input {
+        font-size: 18px;
+    }
+
+    #calc-answer {
+        font-size: 28px; /* Smaller answer size for smaller screens */
     }
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+@media (max-width: 480px) {
+    .button-grid button {
+        padding: 10px;
+        font-size: 12px; /* Even smaller font size for mobile */
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    #calc-input {
+        font-size: 16px;
+    }
+
+    #calc-answer {
+        font-size: 24px; /* Smaller answer size for extra small screens */
     }
 }

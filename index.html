@@ -3,47 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scientific Calculator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="cyber-blue">
+    <!-- Menu Bar -->
+    <nav class="menu-bar">
+        <ul>
+            <li><button onclick="cycleTheme()">Cycle Theme</button></li>
+            <li><button onclick="clearDisplay()">Clear</button></li>
+        </ul>
+    </nav>
+
+    <!-- Calculator Container -->
     <div class="calculator-container">
-        <h1>Scientific Calculator</h1>
-        <input type="text" id="expression" placeholder="Enter expression" readonly>
-        <div class="button-grid">
-            <!-- Row 1 -->
-            <button onclick="appendValue('(')">&#40;</button>
-            <button onclick="appendValue(')')">&#41;</button>
-            <button onclick="clearExpression()">C</button>
-            <button onclick="deleteLast()">DEL</button>
-            <!-- Row 2 -->
-            <button onclick="appendValue('7')">7</button>
-            <button onclick="appendValue('8')">8</button>
-            <button onclick="appendValue('9')">9</button>
-            <button onclick="appendValue('/')">/</button>
-            <!-- Row 3 -->
-            <button onclick="appendValue('4')">4</button>
-            <button onclick="appendValue('5')">5</button>
-            <button onclick="appendValue('6')">6</button>
-            <button onclick="appendValue('*')">*</button>
-            <!-- Row 4 -->
-            <button onclick="appendValue('1')">1</button>
-            <button onclick="appendValue('2')">2</button>
-            <button onclick="appendValue('3')">3</button>
-            <button onclick="appendValue('-')">-</button>
-            <!-- Row 5 -->
-            <button onclick="appendValue('0')">0</button>
-            <button onclick="appendValue('.')">.</button>
-            <button onclick="appendValue('+')">+</button>
-            <button onclick="calculate()">=</button>
+        <h1>Calculator</h1>
+        <div class="display-section">
+            <input type="text" id="calc-input" placeholder="Expression" />
+            <div id="calc-answer" class="answer"></div>
         </div>
-        <div id="result"></div>
-        <button class="color-cycle" onclick="cycleColors()">Cycle Theme</button>
+
+        <!-- Button Grid Layout -->
+        <div class="button-grid">
+            <button onclick="input('Math.sin(')">sin</button>
+            <button onclick="input('Math.cos(')">cos</button>
+            <button onclick="input('Math.tan(')">tan</button>
+            <button onclick="input('Math.log(')">ln</button> <!-- Natural Logarithm -->
+
+            <button onclick="input('Math.log10(')">log</button> <!-- Base 10 Logarithm -->
+            <button onclick="input('Math.pow(')">x^y</button>
+            <button onclick="nthRoot()">√<sub>n</sub></button> <!-- Nth Root -->
+            <button onclick="input('Math.E')">e</button> <!-- Euler's number -->
+
+            <button onclick="input('Math.asin(')">asin</button> <!-- Inverse Sin -->
+            <button onclick="input('Math.acos(')">acos</button> <!-- Inverse Cos -->
+            <button onclick="input('Math.atan(')">atan</button> <!-- Inverse Tan -->
+            <button onclick="input('Math.log(')">ln</button> <!-- Natural Logarithm -->
+
+            <button onclick="input('(')">(</button>
+            <button onclick="input(')')">)</button>
+            <button onclick="input('/')">÷</button>
+            <button onclick="input('*')">×</button>
+
+            <button onclick="input('7')">7</button>
+            <button onclick="input('8')">8</button>
+            <button onclick="input('9')">9</button>
+            <button onclick="input('-')">−</button>
+
+            <button onclick="input('4')">4</button>
+            <button onclick="input('5')">5</button>
+            <button onclick="input('6')">6</button>
+            <button onclick="input('+')">+</button>
+
+            <button onclick="input('1')">1</button>
+            <button onclick="input('2')">2</button>
+            <button onclick="input('3')">3</button>
+            <button onclick="calculate()">=</button>
+
+            <button onclick="input('0')">0</button>
+            <button onclick="input('.')">.</button>
+        </div>
     </div>
-    <footer>
-        <p>Powered by JavaScript</p>
-    </footer>
+
+    <footer>Casio-like Mode | Scientific Calculator</footer>
     <script src="script.js"></script>
 </body>
 </html>

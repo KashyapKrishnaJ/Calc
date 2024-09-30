@@ -1,33 +1,36 @@
-let themes = ["cyber-blue", "inferno-red", "neon-purple", "venom-green", "solar-gold"];
-let currentThemeIndex = 0;
-
-function appendValue(value) {
-    const expressionField = document.getElementById('expression');
-    expressionField.value += value;
+function input(value) {
+    document.getElementById('calc-input').value += value;
 }
 
-function clearExpression() {
-    document.getElementById('expression').value = '';
-    document.getElementById('result').innerText = '';
-}
-
-function deleteLast() {
-    const expressionField = document.getElementById('expression');
-    expressionField.value = expressionField.value.slice(0, -1);
+function clearDisplay() {
+    document.getElementById('calc-input').value = '';
+    document.getElementById('calc-answer').innerText = '';
 }
 
 function calculate() {
-    const expression = document.getElementById('expression').value;
-    let result;
     try {
-        result = eval(expression); // Again, be careful using eval in production
+        const input = document.getElementById('calc-input').value;
+        const result = eval(input); // Use with caution, consider using a safer evaluation method
+        document.getElementById('calc-answer').innerText = result;
     } catch (error) {
-        result = 'Error: Invalid Expression';
+        document.getElementById('calc-answer').innerText = 'Error';
     }
-    document.getElementById('result').innerText = result;
 }
 
-function cycleColors() {
-    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-    document.body.className = themes[currentThemeIndex];
+function nthRoot() {
+    const input = document.getElementById('calc-input').value;
+    const [n, x] = input.split(',').map(Number); // Input format: "n,x" for nth root of x
+    if (n > 0 && x >= 0) {
+        const result = Math.pow(x, 1 / n);
+        document.getElementById('calc-answer').innerText = result;
+    } else {
+        document.getElementById('calc-answer').innerText = 'Error';
+    }
+}
+
+function cycleTheme() {
+    const themes = ['cyber-blue', 'inferno-red', 'neon-purple', 'venom-green', 'solar-gold'];
+    let currentTheme = document.body.className;
+    let nextTheme = themes[(themes.indexOf(currentTheme) + 1) % themes.length];
+    document.body.className = nextTheme;
 }
